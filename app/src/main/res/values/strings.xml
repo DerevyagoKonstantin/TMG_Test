@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">TMG_Test</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">The Meet Group Test</string>
+
+    <string name="main_navigation_twitter">Twitter</string>
+    <string name="main_navigation_photo">Photo</string>
+    <string name="main_navigation_foosball">Foosball</string>
 </resources>

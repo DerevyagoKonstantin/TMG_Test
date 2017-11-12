@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_navigation_twitter"
+        android:icon="@drawable/ic_twitter"
+        android:title="@string/main_navigation_twitter" />
+
+    <item
+        android:id="@+id/main_navigation_photo"
+        android:icon="@drawable/ic_photo"
+        android:title="@string/main_navigation_photo" />
+
+    <item
+        android:id="@+id/main_navigation_foosball"
+        android:icon="@drawable/ic_foosball"
+        android:title="@string/main_navigation_foosball" />
+
+</menu>
