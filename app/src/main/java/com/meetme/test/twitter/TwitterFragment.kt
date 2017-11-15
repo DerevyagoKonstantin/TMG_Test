@@ -1,11 +1,72 @@
 package com.meetme.test.twitter
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
+import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.Toast
 import com.meetme.test.R
 import com.meetme.test.base.BaseFragment
+import com.twitter.sdk.android.core.Callback
+import com.twitter.sdk.android.core.Result
+import com.twitter.sdk.android.core.TwitterException
+import com.twitter.sdk.android.core.models.Tweet
+import com.twitter.sdk.android.tweetui.TimelineResult
+import com.twitter.sdk.android.tweetui.TweetTimelineRecyclerViewAdapter
+import kotlinx.android.synthetic.main.fragment_twitter.*
 
 /**
  * Created by Konstantin on 13.11.2017.
  */
 class TwitterFragment : BaseFragment() {
+
     override val viewId = R.layout.fragment_twitter
+
+    override fun initUI() {
+        if (activity is AppCompatActivity) {
+            (activity as AppCompatActivity).setSupportActionBar(twitterToolbar)
+        }
+    }
+
+    override fun bindVM() {
+        val viewModel = ViewModelProviders.of(this).get(TwitterViewModel::class.java)
+
+        twitterSearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                viewModel.searchQuery.value = p0.toString()
+            }
+        })
+
+        twitterSwipeRefresh.setOnRefreshListener {
+            val adapter = twitterRecyclerView.adapter
+            if (adapter is TweetTimelineRecyclerViewAdapter) {
+                adapter.refresh(object : Callback<TimelineResult<Tweet>>() {
+                    override fun success(result: Result<TimelineResult<Tweet>>?) {
+                        twitterSwipeRefresh.isRefreshing = false
+                    }
+
+                    override fun failure(exception: TwitterException?) {
+                        twitterSwipeRefresh.isRefreshing = false
+                        Toast.makeText(context, R.string.twitter_refresh_failed, Toast.LENGTH_SHORT).show()
+                    }
+                })
+            } else {
+                twitterSwipeRefresh.isRefreshing = false
+            }
+        }
+
+        viewModel.timeline.observe(this, Observer { timeline ->
+            twitterRecyclerView.adapter = TweetTimelineRecyclerViewAdapter.Builder(context)
+                    .setTimeline(timeline)
+                    .setViewStyle(R.style.tw__TweetLightStyle)
+                    .build()
+        })
+    }
 }

@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">The Meet Group Test</string>
 
+    <!--Config-->
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">OeU3nGt5yy125yIUS1d8TubeM</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">0vJLxzj3kBPMKA9E2y0axZIXRnp4bwM0EiR36op5dXo0NATrAx</string>
+
+    <!--Main-->
     <string name="main_navigation_twitter">Twitter</string>
     <string name="main_navigation_photo">Photo</string>
     <string name="main_navigation_foosball">Foosball</string>
+
+    <!--Twitter-->
+    <string name="twitter_search">Search tweets…</string>
+    <string name="twitter_refresh_failed">Something wrong! Please try again.</string>
 </resources>
