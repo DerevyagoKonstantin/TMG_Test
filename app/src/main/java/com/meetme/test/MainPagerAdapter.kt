@@ -1,4 +1,4 @@
-package com.meetme.test.main.adapter
+package com.meetme.test
 
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter

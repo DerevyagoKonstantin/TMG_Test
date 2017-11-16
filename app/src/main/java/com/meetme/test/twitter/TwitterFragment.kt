@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import com.github.salomonbrys.kodein.Kodein
+import com.github.salomonbrys.kodein.kodein
 import com.meetme.test.R
 import com.meetme.test.base.BaseFragment
+import com.meetme.test.twitter.di.twitterModule
 import com.twitter.sdk.android.core.Callback
 import com.twitter.sdk.android.core.Result
 import com.twitter.sdk.android.core.TwitterException
@@ -23,6 +26,10 @@ class TwitterFragment : BaseFragment() {
 
     override val viewId = R.layout.fragment_twitter
 
+    override fun provideOverridingModule() = Kodein.Module {
+        import(twitterModule)
+    }
+
     override fun initUI() {
         if (activity is AppCompatActivity) {
             (activity as AppCompatActivity).setSupportActionBar(twitterToolbar)
@@ -31,6 +38,7 @@ class TwitterFragment : BaseFragment() {
 
     override fun bindVM() {
         val viewModel = ViewModelProviders.of(this).get(TwitterViewModel::class.java)
+        viewModel.inject(kodein().value)
 
         twitterSearch.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {

@@ -1,11 +1,9 @@
-package com.meetme.test.main
+package com.meetme.test
 
-import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.view.MenuItem
-import com.meetme.test.R
 import com.meetme.test.base.BaseActivity
-import com.meetme.test.main.adapter.MainPagerAdapter
+import com.meetme.test.extensions.hideKeyboard
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -14,9 +12,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
     private lateinit var adapter: MainPagerAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun initUI() {
         adapter = MainPagerAdapter(supportFragmentManager)
         mainViewPager.adapter = adapter
         mainViewPager.offscreenPageLimit = adapter.count
@@ -31,10 +27,12 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         }
         R.id.main_navigation_photo -> {
             mainViewPager.currentItem = MainPagerAdapter.PHOTO
+            hideKeyboard()
             true
         }
         R.id.main_navigation_foosball -> {
             mainViewPager.currentItem = MainPagerAdapter.FOOSBALL
+            hideKeyboard()
             true
         }
         else -> false
