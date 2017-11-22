@@ -5,7 +5,6 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.meetme.test.foosball.FoosballViewModelFactory
-import com.meetme.test.foosball.usecase.DeleteGameUseCase
 import com.meetme.test.foosball.usecase.GetGamesUseCase
 
 /**
@@ -15,8 +14,6 @@ import com.meetme.test.foosball.usecase.GetGamesUseCase
 val foosballModule = Kodein.Module {
     bind<GetGamesUseCase>() with provider { GetGamesUseCase(instance()) }
 
-    bind<DeleteGameUseCase>() with provider { DeleteGameUseCase(instance()) }
-
-    bind<FoosballViewModelFactory>() with provider { FoosballViewModelFactory(instance(), instance()) }
+    bind<FoosballViewModelFactory>() with provider { FoosballViewModelFactory(instance()) }
 
 }

@@ -16,7 +16,7 @@ import kotlinx.coroutines.experimental.async
 
 const val FOOSBALL_DB_NAME = "foosball-db-name"
 
-@Database(entities = arrayOf(Player::class, Game::class), version = 2)
+@Database(entities = arrayOf(Player::class, Game::class), version = 3)
 abstract class FoosballDatabase : RoomDatabase(), FoosballLocalSource {
     abstract fun playerDao(): PlayerDao
     abstract fun gameDao(): GameDao

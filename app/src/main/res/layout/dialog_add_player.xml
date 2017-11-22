@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/foosball_first_name"
-            android:inputType="textFilter"
+            android:inputType="textFilter|textCapWords"
             android:lines="1" />
 
     </android.support.design.widget.TextInputLayout>
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/foosball_last_name"
-            android:inputType="textFilter"
+            android:inputType="textFilter|textCapWords"
             android:lines="1" />
 
     </android.support.design.widget.TextInputLayout>

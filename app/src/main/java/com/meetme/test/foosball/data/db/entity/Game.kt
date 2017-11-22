@@ -21,12 +21,14 @@ const val SECOND_SCORE = "second_score"
                 ForeignKey(
                         entity = Player::class,
                         parentColumns = arrayOf(PLAYER_ID),
-                        childColumns = arrayOf(FIRST_PLAYER)
+                        childColumns = arrayOf(FIRST_PLAYER),
+                        onDelete = ForeignKey.CASCADE
                 ),
                 ForeignKey(
                         entity = Player::class,
                         parentColumns = arrayOf(PLAYER_ID),
-                        childColumns = arrayOf(SECOND_PLAYER)
+                        childColumns = arrayOf(SECOND_PLAYER),
+                        onDelete = ForeignKey.CASCADE
                 )
         )
 )

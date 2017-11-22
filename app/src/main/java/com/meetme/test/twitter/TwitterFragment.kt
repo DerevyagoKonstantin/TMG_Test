@@ -74,9 +74,9 @@ class TwitterFragment : BaseFragment() {
             }
         }
 
-        viewModel.timeline.observe(this, Observer { timeline ->
+        viewModel.timeline.observe(this, Observer {
             twitterRecyclerView.adapter = TweetTimelineRecyclerViewAdapter.Builder(context)
-                    .setTimeline(timeline)
+                    .setTimeline(it)
                     .setViewStyle(R.style.tw__TweetLightStyle)
                     .build()
         })

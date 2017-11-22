@@ -2,7 +2,7 @@ package com.meetme.test.foosball.players.update
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.meetme.test.foosball.players.update.usecase.GetPlayerUseCase
+import com.meetme.test.foosball.players.usecase.GetPlayerUseCase
 import com.meetme.test.foosball.players.update.usecase.UpdatePlayerUseCase
 
 

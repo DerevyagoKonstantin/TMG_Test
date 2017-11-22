@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.instance
 import com.meetme.test.R
@@ -15,6 +14,7 @@ import com.meetme.test.base.BaseFragment
 import com.meetme.test.foosball.adapter.FoosballGamesAdapter
 import com.meetme.test.foosball.add.FoosballAddGameDialog
 import com.meetme.test.foosball.data.db.entity.Game
+import com.meetme.test.foosball.delete.FoosballDeleteGameDialog
 import com.meetme.test.foosball.di.foosballModule
 import com.meetme.test.foosball.players.FoosballPlayersActivity
 import com.meetme.test.foosball.update.FoosballUpdateGameDialog
@@ -43,7 +43,7 @@ class FoosballFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem?) = when (item?.itemId) {
         R.id.foosball_players -> {
-            openPlayers()
+            viewModel.openPlayers.value = Unit
             true
         }
         else -> super.onOptionsItemSelected(item)
@@ -57,7 +57,9 @@ class FoosballFragment : BaseFragment() {
 
         view.foosballGamesRecyclerView.adapter = adapter
 
-        view.foosballGameAdd.setOnClickListener { showAddGameDialog() }
+        view.foosballGameAdd.setOnClickListener {
+            viewModel.addGame.value = Unit
+        }
     }
 
     override fun bindVM() {
@@ -67,16 +69,24 @@ class FoosballFragment : BaseFragment() {
         adapter.updateGame = viewModel.updateGame
         adapter.deleteGame = viewModel.deleteGame
 
+        viewModel.games.observe(this, Observer {
+            adapter.games = it ?: listOf()
+        })
+
+        viewModel.openPlayers.observe(this, Observer {
+            openPlayers()
+        })
+
+        viewModel.addGame.observe(this, Observer {
+            showAddGameDialog()
+        })
+
         viewModel.updateGame.observe(this, Observer { game ->
             game?.let { showUpdateGameDialog(it) }
         })
 
-        viewModel.deleteGameObserver.observe(this, Observer {
-            Toast.makeText(context, getString(R.string.foosball_game_delete, it), Toast.LENGTH_SHORT).show()
-        })
-
-        viewModel.games.observe(this, Observer {
-            adapter.games = it ?: listOf()
+        viewModel.deleteGame.observe(this, Observer { game ->
+            game?.let { showDeleteGameDialog(it) }
         })
     }
 
@@ -90,6 +100,10 @@ class FoosballFragment : BaseFragment() {
 
     private fun showUpdateGameDialog(game: Game) {
         FoosballUpdateGameDialog.getInstance(game.id).show(childFragmentManager, null)
+    }
+
+    private fun showDeleteGameDialog(game: Game) {
+        FoosballDeleteGameDialog.getInstance(game.id).show(childFragmentManager, null)
     }
 
 }

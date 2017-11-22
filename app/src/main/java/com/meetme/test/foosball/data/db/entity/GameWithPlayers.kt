@@ -31,6 +31,23 @@ data class GameWithPlayers(
         @ColumnInfo(name = SECOND_SCORE)
         var secondScore: Int = 0
 ) {
+    constructor(firstPlayer: Player, secondPlayer: Player, firstScore: Int, secondScore: Int) : this(
+            firstPlayerId = firstPlayer.id,
+            firstPlayerFirstName = firstPlayer.firstName,
+            firstPlayerLastName = firstPlayer.lastName,
+            secondPlayerId = secondPlayer.id,
+            secondPlayerFirstName = secondPlayer.firstName,
+            secondPlayerLastName = secondPlayer.lastName,
+            firstScore = firstScore,
+            secondScore = secondScore
+    )
+
+    constructor(id: Long, firstPlayer: Player, secondPlayer: Player, firstScore: Int, secondScore: Int) : this(
+            firstPlayer, secondPlayer, firstScore, secondScore
+    ) {
+        this.id = id
+    }
+
     fun getFirstPlayer(): Player = Player(firstPlayerId, firstPlayerFirstName, firstPlayerLastName)
 
     fun getSecondPlayer(): Player = Player(secondPlayerId, secondPlayerFirstName, secondPlayerLastName)
@@ -40,4 +57,8 @@ data class GameWithPlayers(
         secondScore > firstScore -> context.getString(R.string.foosball_player_won, getSecondPlayer().getFullName())
         else -> context.getString(R.string.foosball_draw)
     }
+
+    fun getGame(): Game = Game(id, firstPlayerId, secondPlayerId, firstScore, secondScore)
+
+    override fun toString() = "${getFirstPlayer()} $firstScore : $secondScore ${getSecondPlayer()}"
 }

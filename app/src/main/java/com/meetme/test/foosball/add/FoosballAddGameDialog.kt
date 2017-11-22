@@ -8,7 +8,7 @@ import com.github.salomonbrys.kodein.instance
 import com.meetme.test.R
 import com.meetme.test.base.BaseDialogFragment
 import com.meetme.test.foosball.add.di.foosballAddGameModule
-import com.meetme.test.foosball.data.db.entity.Game
+import com.meetme.test.foosball.data.db.entity.GameWithPlayers
 import com.meetme.test.foosball.data.db.entity.Player
 import com.meetme.test.foosball.utils.getPlayersAdapter
 import com.meetme.test.foosball.utils.getScoreAdapter
@@ -37,6 +37,9 @@ class FoosballAddGameDialog : BaseDialogFragment() {
             val players = it ?: listOf()
             dialogView.addGameFirstPlayer.adapter = getPlayersAdapter(context!!, players)
             dialogView.addGameSecondPlayer.adapter = getPlayersAdapter(context!!, players)
+            if (dialogView.addGameSecondPlayer.adapter.count > 1) {
+                dialogView.addGameSecondPlayer.setSelection(1)
+            }
         })
 
         dialogView.addGameFirstScore.adapter = getScoreAdapter(context!!)
@@ -48,12 +51,12 @@ class FoosballAddGameDialog : BaseDialogFragment() {
     }
 
     override fun positiveClick(): Boolean {
-        val firstPlayer = (dialogView.addGameFirstPlayer.selectedItem as Player).id
-        val secondPlayer = (dialogView.addGameSecondPlayer.selectedItem as Player).id
+        val firstPlayer = dialogView.addGameFirstPlayer.selectedItem as Player
+        val secondPlayer = dialogView.addGameSecondPlayer.selectedItem as Player
         val firstScore = dialogView.addGameFirstScore.selectedItem as Int
         val secondScore = dialogView.addGameSecondScore.selectedItem as Int
 
-        viewModel.saveGame.value = Game(firstPlayer, secondPlayer, firstScore, secondScore)
+        viewModel.saveGame.value = GameWithPlayers(firstPlayer, secondPlayer, firstScore, secondScore)
 
         return true
     }

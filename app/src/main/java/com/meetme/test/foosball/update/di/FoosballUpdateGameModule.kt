@@ -6,7 +6,7 @@ import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.meetme.test.foosball.players.usecase.GetPlayersUseCase
 import com.meetme.test.foosball.update.FoosballUpdateGameViewModelFactory
-import com.meetme.test.foosball.update.usecase.GetGameUseCase
+import com.meetme.test.foosball.usecase.GetGameUseCase
 import com.meetme.test.foosball.update.usecase.UpdateGameUseCase
 
 

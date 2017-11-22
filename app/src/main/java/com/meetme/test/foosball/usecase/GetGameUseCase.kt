@@ -1,4 +1,4 @@
-package com.meetme.test.foosball.update.usecase
+package com.meetme.test.foosball.usecase
 
 import android.arch.lifecycle.LiveData
 import com.meetme.test.base.UseCase

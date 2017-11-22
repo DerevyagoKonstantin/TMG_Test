@@ -17,10 +17,11 @@ abstract class BaseDialogFragment : DialogFragment(), KodeinInjected {
 
     override val injector: KodeinInjector = KodeinInjector()
 
-    abstract val viewId: Int
+    open protected val viewId: Int = R.layout.empty
     protected lateinit var dialogView: View
 
     open protected val titleTextId = R.string.empty
+    open protected val messageTextId = R.string.empty
     open protected val positiveTextId = R.string.ok
     open protected val negativeTextId = R.string.cancel
 
@@ -32,11 +33,21 @@ abstract class BaseDialogFragment : DialogFragment(), KodeinInjected {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return if (context != null) {
             dialogView = LayoutInflater.from(context).inflate(viewId, null)
-            initUI(dialogView)
+            initUI()
 
-            val dialog = AlertDialog.Builder(context!!)
-                    .setTitle(titleTextId)
-                    .setView(dialogView)
+            val builder = AlertDialog.Builder(context!!)
+
+            if (titleTextId != R.string.empty) {
+                builder.setTitle(titleTextId)
+            }
+            if (messageTextId != R.string.empty) {
+                builder.setMessage(messageTextId)
+            }
+            if (viewId != R.layout.empty) {
+                builder.setView(dialogView)
+            }
+
+            val dialog = builder
                     .setPositiveButton(positiveTextId, null)
                     .setNegativeButton(negativeTextId, { _, _ -> negativeClick() })
                     .create()
@@ -60,7 +71,7 @@ abstract class BaseDialogFragment : DialogFragment(), KodeinInjected {
         bindVM()
     }
 
-    open protected fun initUI(view: View) {
+    open protected fun initUI() {
     }
 
     open protected fun bindVM() {

@@ -11,7 +11,7 @@ import com.github.salomonbrys.kodein.instance
 import com.meetme.test.R
 import com.meetme.test.base.BaseDialogFragment
 import com.meetme.test.foosball.data.db.entity.GAME_ID
-import com.meetme.test.foosball.data.db.entity.Game
+import com.meetme.test.foosball.data.db.entity.GameWithPlayers
 import com.meetme.test.foosball.data.db.entity.Player
 import com.meetme.test.foosball.update.di.foosballUpdateGameModule
 import com.meetme.test.foosball.utils.getPlayersAdapter
@@ -22,9 +22,9 @@ import kotlinx.android.synthetic.main.dialog_update_game.view.*
 class FoosballUpdateGameDialog : BaseDialogFragment() {
 
     companion object {
-        fun getInstance(playerId: Long): FoosballUpdateGameDialog {
+        fun getInstance(gameId: Long): FoosballUpdateGameDialog {
             val bundle = Bundle()
-            bundle.putLong(GAME_ID, playerId)
+            bundle.putLong(GAME_ID, gameId)
 
             val dialog = FoosballUpdateGameDialog()
             dialog.arguments = bundle
@@ -88,14 +88,14 @@ class FoosballUpdateGameDialog : BaseDialogFragment() {
     }
 
     override fun positiveClick(): Boolean {
-        val firstPlayer = (dialogView.updateGameFirstPlayer.selectedItem as Player).id
-        val secondPlayer = (dialogView.updateGameSecondPlayer.selectedItem as Player).id
-        val firstScore = dialogView.updateGameFirstScore.selectedItem as Int
-        val secondScore = dialogView.updateGameSecondScore.selectedItem as Int
-
         val game = viewModel.game.value
         if (game != null) {
-            viewModel.updateGame.value = Game(game.id, firstPlayer, secondPlayer, firstScore, secondScore)
+            val firstPlayer = dialogView.updateGameFirstPlayer.selectedItem as Player
+            val secondPlayer = dialogView.updateGameSecondPlayer.selectedItem as Player
+            val firstScore = dialogView.updateGameFirstScore.selectedItem as Int
+            val secondScore = dialogView.updateGameSecondScore.selectedItem as Int
+
+            viewModel.updateGame.value = GameWithPlayers(game.id, firstPlayer, secondPlayer, firstScore, secondScore)
         }
 
         return true
