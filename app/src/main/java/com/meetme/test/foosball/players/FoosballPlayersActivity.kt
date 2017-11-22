@@ -8,6 +8,7 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.instance
 import com.meetme.test.R
 import com.meetme.test.base.BaseActivity
+import com.meetme.test.extensions.visible
 import com.meetme.test.foosball.data.db.entity.Player
 import com.meetme.test.foosball.players.adapter.FoosballPlayersAdapter
 import com.meetme.test.foosball.players.add.FoosballAddPlayerDialog
@@ -72,6 +73,10 @@ class FoosballPlayersActivity : BaseActivity() {
 
         viewModel.deletePlayer.observe(this, Observer { player ->
             player?.let { showDeletePlayerDialog(it) }
+        })
+
+        viewModel.emptyVisibility.observe(this, Observer {
+            foosballPlayersEmptyView.visible = it ?: false
         })
     }
 

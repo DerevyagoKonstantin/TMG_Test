@@ -35,6 +35,7 @@
     <string name="foosball_first_name">First Name</string>
     <string name="foosball_last_name">Last Name</string>
     <string name="foosball_player_empty_name">Please enter First Name and/or Last Name</string>
+    <string name="foosball_game_empty_players">Please add some players</string>
     <string name="foosball_player_save">Player [%1$s] has been saved</string>
     <string name="foosball_player_delete">Player [%1$s] has been deleted</string>
     <string name="foosball_player_update">Player [%1$s] has been updated</string>
@@ -47,4 +48,6 @@
     <string name="foosball_game_save">Game [%1$s] has been saved</string>
     <string name="foosball_game_delete">Game [%1$s] has been deleted</string>
     <string name="foosball_game_update">Game [%1$s] has been updated</string>
+    <string name="foosball_games_empty">Add new games!</string>
+    <string name="foosball_players_empty">Add new players!</string>
 </resources>

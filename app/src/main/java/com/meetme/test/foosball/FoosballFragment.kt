@@ -11,6 +11,7 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.instance
 import com.meetme.test.R
 import com.meetme.test.base.BaseFragment
+import com.meetme.test.extensions.visible
 import com.meetme.test.foosball.adapter.FoosballGamesAdapter
 import com.meetme.test.foosball.add.FoosballAddGameDialog
 import com.meetme.test.foosball.data.db.entity.Game
@@ -19,6 +20,7 @@ import com.meetme.test.foosball.di.foosballModule
 import com.meetme.test.foosball.players.FoosballPlayersActivity
 import com.meetme.test.foosball.update.FoosballUpdateGameDialog
 import com.meetme.test.foosball.utils.getScrollListener
+import kotlinx.android.synthetic.main.fragment_foosball.*
 import kotlinx.android.synthetic.main.fragment_foosball.view.*
 
 /**
@@ -89,6 +91,10 @@ class FoosballFragment : BaseFragment() {
 
         viewModel.deleteGame.observe(this, Observer { game ->
             game?.let { showDeleteGameDialog(it) }
+        })
+
+        viewModel.emptyVisibility.observe(this, Observer {
+            foosballEmptyView.visible = it ?: false
         })
     }
 

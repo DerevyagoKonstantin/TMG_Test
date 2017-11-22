@@ -51,13 +51,18 @@ class FoosballAddGameDialog : BaseDialogFragment() {
     }
 
     override fun positiveClick(): Boolean {
-        val firstPlayer = dialogView.addGameFirstPlayer.selectedItem as Player
-        val secondPlayer = dialogView.addGameSecondPlayer.selectedItem as Player
-        val firstScore = dialogView.addGameFirstScore.selectedItem as Int
-        val secondScore = dialogView.addGameSecondScore.selectedItem as Int
+        return if (dialogView.addGameFirstPlayer.adapter.count > 0 && dialogView.addGameSecondPlayer.adapter.count > 0) {
+            val firstPlayer = dialogView.addGameFirstPlayer.selectedItem as Player
+            val secondPlayer = dialogView.addGameSecondPlayer.selectedItem as Player
+            val firstScore = dialogView.addGameFirstScore.selectedItem as Int
+            val secondScore = dialogView.addGameSecondScore.selectedItem as Int
 
-        viewModel.saveGame.value = GameWithPlayers(firstPlayer, secondPlayer, firstScore, secondScore)
+            viewModel.saveGame.value = GameWithPlayers(firstPlayer, secondPlayer, firstScore, secondScore)
 
-        return true
+            true
+        } else {
+            Toast.makeText(context, R.string.foosball_game_empty_players, Toast.LENGTH_SHORT).show()
+            false
+        }
     }
 }
