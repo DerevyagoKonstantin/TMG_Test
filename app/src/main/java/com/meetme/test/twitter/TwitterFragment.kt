@@ -5,9 +5,10 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Toast
 import com.github.salomonbrys.kodein.Kodein
-import com.github.salomonbrys.kodein.kodein
+import com.github.salomonbrys.kodein.instance
 import com.meetme.test.R
 import com.meetme.test.base.BaseFragment
 import com.meetme.test.twitter.di.twitterModule
@@ -18,11 +19,14 @@ import com.twitter.sdk.android.core.models.Tweet
 import com.twitter.sdk.android.tweetui.TimelineResult
 import com.twitter.sdk.android.tweetui.TweetTimelineRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_twitter.*
+import kotlinx.android.synthetic.main.fragment_twitter.view.*
 
 /**
  * Created by Konstantin on 13.11.2017.
  */
 class TwitterFragment : BaseFragment() {
+
+    private val viewModelFactory by instance<TwitterViewModelFactory>()
 
     override val viewId = R.layout.fragment_twitter
 
@@ -30,15 +34,15 @@ class TwitterFragment : BaseFragment() {
         import(twitterModule)
     }
 
-    override fun initUI() {
+    override fun initUI(view: View) {
         if (activity is AppCompatActivity) {
-            (activity as AppCompatActivity).setSupportActionBar(twitterToolbar)
+            (activity as AppCompatActivity).setSupportActionBar(view.twitterToolbar)
         }
     }
 
     override fun bindVM() {
-        val viewModel = ViewModelProviders.of(this).get(TwitterViewModel::class.java)
-        viewModel.inject(kodein().value)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory)
+                .get(TwitterViewModel::class.java)
 
         twitterSearch.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {

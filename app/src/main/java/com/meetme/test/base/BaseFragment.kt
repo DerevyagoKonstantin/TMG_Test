@@ -15,7 +15,7 @@ abstract class BaseFragment : KodeinSupportFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(viewId, container, false)
-        initUI()
+        initUI(view)
         return view
     }
 
@@ -24,7 +24,7 @@ abstract class BaseFragment : KodeinSupportFragment() {
         bindVM()
     }
 
-    open protected fun initUI() {
+    open protected fun initUI(view: View) {
     }
 
     open protected fun bindVM() {

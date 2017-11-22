@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">The Meet Group Test</string>
 
+    <string name="empty" />
+
     <!--Config-->
     <string name="com.twitter.sdk.android.CONSUMER_KEY">OeU3nGt5yy125yIUS1d8TubeM</string>
     <string name="com.twitter.sdk.android.CONSUMER_SECRET">0vJLxzj3kBPMKA9E2y0axZIXRnp4bwM0EiR36op5dXo0NATrAx</string>
+
+    <!--Actions-->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
 
     <!--Main-->
     <string name="main_navigation_twitter">Twitter</string>
@@ -13,4 +22,25 @@
     <!--Twitter-->
     <string name="twitter_search">Search tweets…</string>
     <string name="twitter_refresh_failed">Something wrong! Please try again.</string>
+
+    <!--Foosball-->
+    <string name="foosball_score_separator">:</string>
+    <string name="foosball_draw">Draw</string>
+    <string name="foosball_player_won">%1$s won</string>
+    <string name="foosball_players">Players</string>
+    <string name="foosball_add_player">Add Player</string>
+    <string name="foosball_update_player">Update Player</string>
+    <string name="foosball_first_name">First Name</string>
+    <string name="foosball_last_name">Last Name</string>
+    <string name="foosball_player_empty_name">Please enter First Name and/or Last Name</string>
+    <string name="foosball_player_save">Player [%1$s] has been saved</string>
+    <string name="foosball_player_delete">Player [%1$s] has been deleted</string>
+    <string name="foosball_player_update">Player [%1$s] has been updated</string>
+    <string name="foosball_add_game">Add Game</string>
+    <string name="foosball_update_game">Update Game</string>
+    <string name="foosball_first_player">First Player</string>
+    <string name="foosball_second_player">Second Player</string>
+    <string name="foosball_game_save">Game [%1$s] has been saved</string>
+    <string name="foosball_game_delete">Game [%1$s] has been deleted</string>
+    <string name="foosball_game_update">Game [%1$s] has been updated</string>
 </resources>

@@ -2,6 +2,7 @@ package com.meetme.test.base
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.MenuItem
 import com.github.salomonbrys.kodein.android.KodeinAppCompatActivity
 
 /**
@@ -22,5 +23,13 @@ abstract class BaseActivity : KodeinAppCompatActivity() {
     }
 
     open protected fun bindVM() {
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?) = when (item?.itemId) {
+        android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 }

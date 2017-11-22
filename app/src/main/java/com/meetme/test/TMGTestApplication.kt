@@ -6,6 +6,7 @@ import com.github.salomonbrys.kodein.KodeinAware
 import com.github.salomonbrys.kodein.android.androidActivityScope
 import com.github.salomonbrys.kodein.android.autoAndroidModule
 import com.github.salomonbrys.kodein.lazy
+import com.meetme.test.foosball.di.foosballLocaleModule
 import com.twitter.sdk.android.core.Twitter
 
 /**
@@ -15,6 +16,7 @@ class TMGTestApplication : Application(), KodeinAware {
 
     override val kodein by Kodein.lazy {
         import(autoAndroidModule(this@TMGTestApplication))
+        import(foosballLocaleModule)
     }
 
     override fun onCreate() {
