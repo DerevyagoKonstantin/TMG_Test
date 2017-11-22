@@ -18,6 +18,7 @@ import com.meetme.test.foosball.delete.FoosballDeleteGameDialog
 import com.meetme.test.foosball.di.foosballModule
 import com.meetme.test.foosball.players.FoosballPlayersActivity
 import com.meetme.test.foosball.update.FoosballUpdateGameDialog
+import com.meetme.test.foosball.utils.getScrollListener
 import kotlinx.android.synthetic.main.fragment_foosball.view.*
 
 /**
@@ -56,6 +57,7 @@ class FoosballFragment : BaseFragment() {
         setHasOptionsMenu(true)
 
         view.foosballGamesRecyclerView.adapter = adapter
+        view.foosballGamesRecyclerView.addOnScrollListener(getScrollListener(view.foosballGameAdd))
 
         view.foosballGameAdd.setOnClickListener {
             viewModel.addGame.value = Unit

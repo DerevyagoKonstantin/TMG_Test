@@ -14,6 +14,7 @@ import com.meetme.test.foosball.players.add.FoosballAddPlayerDialog
 import com.meetme.test.foosball.players.delete.FoosballDeletePlayerDialog
 import com.meetme.test.foosball.players.di.foosballPlayersModule
 import com.meetme.test.foosball.players.update.FoosballUpdatePlayerDialog
+import com.meetme.test.foosball.utils.getScrollListener
 import kotlinx.android.synthetic.main.activity_foosball_players.*
 
 
@@ -39,7 +40,11 @@ class FoosballPlayersActivity : BaseActivity() {
     }
 
     override fun initUI() {
+        setSupportActionBar(foosballPlayersToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         foosballPlayersRecyclerView.adapter = adapter
+        foosballPlayersRecyclerView.addOnScrollListener(getScrollListener(foosballPlayerAdd))
 
         foosballPlayerAdd.setOnClickListener {
             viewModel.addPlayer.value = Unit
