@@ -8,6 +8,7 @@ import com.meetme.test.foosball.data.db.dao.PlayerDao
 import com.meetme.test.foosball.data.db.entity.Game
 import com.meetme.test.foosball.data.db.entity.GameWithPlayers
 import com.meetme.test.foosball.data.db.entity.Player
+import com.meetme.test.foosball.data.db.entity.PlayerWithGames
 import kotlinx.coroutines.experimental.async
 
 /**
@@ -40,6 +41,8 @@ abstract class FoosballDatabase : RoomDatabase(), FoosballLocalSource {
     }
 
     override fun getPlayer(id: Long): LiveData<Player> = playerDao().getPlayer(id)
+
+    override fun getPlayersWithGames(): LiveData<List<PlayerWithGames>> = playerDao().getPlayersWithGames()
 
     override fun getAllPlayers(): LiveData<List<Player>> = playerDao().getAll()
 
