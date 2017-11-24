@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData
 import com.meetme.test.foosball.data.db.entity.Game
 import com.meetme.test.foosball.data.db.entity.GameWithPlayers
 import com.meetme.test.foosball.data.db.entity.Player
+import com.meetme.test.foosball.data.db.entity.PlayerWithGames
 
 
 interface FoosballLocalSource {
@@ -15,6 +16,8 @@ interface FoosballLocalSource {
     fun updatePlayer(player: Player)
 
     fun getPlayer(id: Long): LiveData<Player>
+
+    fun getPlayersWithGames(): LiveData<List<PlayerWithGames>>
 
     fun getAllPlayers(): LiveData<List<Player>>
 
