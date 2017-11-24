@@ -33,7 +33,7 @@ class FoosballAddPlayerDialog : BaseDialogFragment() {
                 .get(FoosballAddPlayerViewModel::class.java)
 
         viewModel.savePlayerObserver.observe(this, Observer {
-            Toast.makeText(context, getString(R.string.foosball_player_save, it?.getFullName()), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.foosball_player_save, it), Toast.LENGTH_SHORT).show()
         })
 
         dialog.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)

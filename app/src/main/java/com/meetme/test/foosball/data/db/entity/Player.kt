@@ -24,13 +24,11 @@ data class Player(
     @ColumnInfo(name = PLAYER_ID)
     var id: Long = 0
 
-    constructor(id: Long, firstName: String, lastName: String): this(firstName, lastName) {
+    constructor(id: Long, firstName: String, lastName: String) : this(firstName, lastName) {
         this.id = id
     }
 
-    fun getFullName(): String = (firstName + " " + lastName).trim()
-
-    override fun toString() = getFullName()
+    override fun toString() = (firstName + " " + lastName).trim()
 }
 
 

@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.meetme.test.R
 import com.meetme.test.foosball.data.db.entity.Player
+import com.meetme.test.foosball.data.db.entity.PlayerWithGames
+import kotlinx.android.synthetic.main.activity_foosball_players.view.*
 import kotlinx.android.synthetic.main.foosball_player_item.view.*
 
 
 class FoosballPlayersAdapter : RecyclerView.Adapter<FoosballPlayersAdapter.FoosballPlayerViewHolder>() {
 
-    var players: List<Player> = listOf()
+    var players: List<PlayerWithGames> = listOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -33,15 +35,16 @@ class FoosballPlayersAdapter : RecyclerView.Adapter<FoosballPlayersAdapter.Foosb
     }
 
     class FoosballPlayerViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        fun bind(player: Player, editClick: MutableLiveData<Player>, deleteClick: MutableLiveData<Player>) {
-            itemView.foosballPlayerName.text = player.getFullName()
+        fun bind(player: PlayerWithGames, editClick: MutableLiveData<Player>, deleteClick: MutableLiveData<Player>) {
+            itemView.foosballPlayerName.text = player.getPlayer().toString()
+            itemView.foosballPlayerTitle.text = player.getGamesStat()
 
             itemView.foosballPlayerEdit.setOnClickListener {
-                editClick.value = player
+                editClick.value = player.getPlayer()
             }
 
             itemView.foosballPlayerDelete.setOnClickListener {
-                deleteClick.value = player
+                deleteClick.value = player.getPlayer()
             }
         }
     }

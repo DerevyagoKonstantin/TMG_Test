@@ -4,7 +4,6 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.instance
 import com.meetme.test.R
@@ -78,10 +77,6 @@ class FoosballPlayersActivity : BaseActivity() {
 
         viewModel.emptyVisibility.observe(this, Observer {
             foosballPlayersEmptyView.visible = it ?: false
-        })
-
-        viewModel.playersWithGames.observe(this, Observer {
-            Log.i("Test", "players = $it")
         })
     }
 

@@ -20,4 +20,12 @@ data class PlayerWithGames(
         var loses: Int = 0,
         @ColumnInfo(name = DRAWS)
         var draws: Int = 0
-)
+) {
+    fun getPlayer() = Player(id, firstName, lastName)
+
+    fun getGamesStat(): String {
+        val games = wins + loses + draws
+        val winPercentage = if (games == 0) 0 else wins * 100 / games
+        return "$wins : $loses : $draws / $winPercentage%"
+    }
+}

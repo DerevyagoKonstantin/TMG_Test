@@ -22,10 +22,13 @@
                 android:id="@+id/foosballPlayerTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/default_padding"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:lines="1"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_text_size" />
 
             <ImageView
                 android:id="@+id/foosballPlayerEdit"

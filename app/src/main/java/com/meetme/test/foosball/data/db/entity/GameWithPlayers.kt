@@ -53,8 +53,8 @@ data class GameWithPlayers(
     fun getSecondPlayer(): Player = Player(secondPlayerId, secondPlayerFirstName, secondPlayerLastName)
 
     fun getWinner(context: Context): String = when {
-        firstScore > secondScore -> context.getString(R.string.foosball_player_won, getFirstPlayer().getFullName())
-        secondScore > firstScore -> context.getString(R.string.foosball_player_won, getSecondPlayer().getFullName())
+        firstScore > secondScore -> context.getString(R.string.foosball_player_won, getFirstPlayer())
+        secondScore > firstScore -> context.getString(R.string.foosball_player_won, getSecondPlayer())
         else -> context.getString(R.string.foosball_draw)
     }
 
