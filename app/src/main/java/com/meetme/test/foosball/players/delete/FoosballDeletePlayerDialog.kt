@@ -47,7 +47,9 @@ class FoosballDeletePlayerDialog : BaseDialogFragment() {
         viewModel.player.observe(this, Observer { })
 
         viewModel.deletePlayerObserver.observe(this, Observer {
-            Toast.makeText(context, getString(R.string.foosball_game_delete, it), Toast.LENGTH_SHORT).show()
+            if (it != null) {
+                Toast.makeText(context, getString(R.string.foosball_player_delete, it), Toast.LENGTH_SHORT).show()
+            }
         })
     }
 
