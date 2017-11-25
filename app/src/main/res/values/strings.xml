@@ -50,4 +50,10 @@
     <string name="foosball_game_update">Game [%1$s] has been updated</string>
     <string name="foosball_games_empty">Add new games!</string>
     <string name="foosball_players_empty">Add new players!</string>
+    <string name="foosball_players_sort">Sort</string>
+    <string name="foosball_sort_win_percentage">Win %</string>
+    <string name="foosball_sort_games">Games</string>
+    <string name="foosball_sort_wins">Wins</string>
+    <string name="foosball_sort_losses">Losses</string>
+    <string name="foosball_sort_draws">Draws</string>
 </resources>

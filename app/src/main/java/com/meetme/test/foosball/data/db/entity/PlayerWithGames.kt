@@ -4,7 +4,7 @@ import android.arch.persistence.room.ColumnInfo
 
 
 const val WINS = "wins"
-const val LOSES = "loses"
+const val LOSSES = "losses"
 const val DRAWS = "draws"
 
 data class PlayerWithGames(
@@ -16,7 +16,7 @@ data class PlayerWithGames(
         var lastName: String = "",
         @ColumnInfo(name = WINS)
         var wins: Int = 0,
-        @ColumnInfo(name = LOSES)
+        @ColumnInfo(name = LOSSES)
         var loses: Int = 0,
         @ColumnInfo(name = DRAWS)
         var draws: Int = 0
@@ -24,8 +24,13 @@ data class PlayerWithGames(
     fun getPlayer() = Player(id, firstName, lastName)
 
     fun getGamesStat(): String {
-        val games = wins + loses + draws
-        val winPercentage = if (games == 0) 0 else wins * 100 / games
-        return "$wins : $loses : $draws / $winPercentage%"
+        return "$wins : $loses : $draws / ${getWinPercentage()}%"
     }
+
+    fun getWinPercentage(): Int {
+        val games = getGames()
+        return if (games == 0) 0 else wins * 100 / games
+    }
+
+    fun getGames() = wins + loses + draws
 }

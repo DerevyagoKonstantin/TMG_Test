@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/ic_sort"
+        android:title="@string/foosball_players_sort"
+        app:showAsAction="ifRoom">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/sort_win_percentage"
+                    android:checked="true"
+                    android:title="@string/foosball_sort_win_percentage" />
+
+                <item
+                    android:id="@+id/sort_games"
+                    android:title="@string/foosball_sort_games" />
+
+                <item
+                    android:id="@+id/sort_wins"
+                    android:title="@string/foosball_sort_wins" />
+
+                <item
+                    android:id="@+id/sort_losses"
+                    android:title="@string/foosball_sort_losses" />
+
+                <item
+                    android:id="@+id/sort_draws"
+                    android:title="@string/foosball_sort_draws" />
+
+            </group>
+
+
+        </menu>
+
+    </item>
+
+</menu>

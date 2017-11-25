@@ -26,7 +26,7 @@ interface PlayerDao {
     @Query("SELECT * FROM $PLAYER")
     fun getAll(): LiveData<List<Player>>
 
-    @Query("SELECT player_id $PLAYER_ID, $FIRST_NAME, $LAST_NAME, SUM(win) $WINS, SUM(loss) $LOSES, SUM(draw) $DRAWS " +
+    @Query("SELECT player_id $PLAYER_ID, $FIRST_NAME, $LAST_NAME, SUM(win) $WINS, SUM(loss) $LOSSES, SUM(draw) $DRAWS " +
             "FROM " +
             "(SELECT player.$PLAYER_ID player_id, player.$FIRST_NAME, player.$LAST_NAME, " +
             "CASE WHEN $FIRST_SCORE > $SECOND_SCORE THEN 1 ELSE 0 END win, " +
