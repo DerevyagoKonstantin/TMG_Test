@@ -5,9 +5,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.github.salomonbrys.kodein.android.KodeinAppCompatActivity
 
-/**
- * Created by Konstantin on 13.11.2017.
- */
 abstract class BaseActivity : KodeinAppCompatActivity() {
     abstract val viewId: Int
 

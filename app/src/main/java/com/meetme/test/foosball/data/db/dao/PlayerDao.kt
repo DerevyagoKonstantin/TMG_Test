@@ -4,10 +4,6 @@ import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import com.meetme.test.foosball.data.db.entity.*
 
-/**
- * Created by Konstantin on 17.11.2017.
- */
-
 @Dao
 interface PlayerDao {
 

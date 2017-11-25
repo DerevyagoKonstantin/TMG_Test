@@ -7,9 +7,6 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 
 
-/**
- * Created by Konstantin on 13.11.2017.
- */
 class NonScrollableViewPager : ViewPager {
 
     var isPagingEnable = false

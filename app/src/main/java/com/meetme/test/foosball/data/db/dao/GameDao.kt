@@ -1,33 +1,8 @@
 package com.meetme.test.foosball.data.db.dao
 
 import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
-import android.arch.persistence.room.Update
-import com.meetme.test.foosball.data.db.entity.FIRST_NAME
-import com.meetme.test.foosball.data.db.entity.FIRST_PLAYER
-import com.meetme.test.foosball.data.db.entity.FIRST_PLAYER_FIRST_NAME
-import com.meetme.test.foosball.data.db.entity.FIRST_PLAYER_ID
-import com.meetme.test.foosball.data.db.entity.FIRST_PLAYER_LAST_NAME
-import com.meetme.test.foosball.data.db.entity.FIRST_SCORE
-import com.meetme.test.foosball.data.db.entity.GAME
-import com.meetme.test.foosball.data.db.entity.GAME_ID
-import com.meetme.test.foosball.data.db.entity.Game
-import com.meetme.test.foosball.data.db.entity.GameWithPlayers
-import com.meetme.test.foosball.data.db.entity.LAST_NAME
-import com.meetme.test.foosball.data.db.entity.PLAYER
-import com.meetme.test.foosball.data.db.entity.PLAYER_ID
-import com.meetme.test.foosball.data.db.entity.SECOND_PLAYER
-import com.meetme.test.foosball.data.db.entity.SECOND_PLAYER_FIRST_NAME
-import com.meetme.test.foosball.data.db.entity.SECOND_PLAYER_ID
-import com.meetme.test.foosball.data.db.entity.SECOND_PLAYER_LAST_NAME
-import com.meetme.test.foosball.data.db.entity.SECOND_SCORE
-
-/**
- * Created by Konstantin on 17.11.2017.
- */
+import android.arch.persistence.room.*
+import com.meetme.test.foosball.data.db.entity.*
 
 @Dao
 interface GameDao {

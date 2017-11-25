@@ -25,9 +25,6 @@ import com.meetme.test.foosball.utils.getScrollListener
 import kotlinx.android.synthetic.main.fragment_foosball.*
 import kotlinx.android.synthetic.main.fragment_foosball.view.*
 
-/**
- * Created by Konstantin on 13.11.2017.
- */
 class FoosballFragment : BaseFragment() {
 
     private val viewModelFactory by instance<FoosballViewModelFactory>()

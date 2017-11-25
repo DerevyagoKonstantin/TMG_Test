@@ -8,9 +8,6 @@ import com.meetme.test.twitter.usecase.GetTimelineUseCase
 import com.twitter.sdk.android.core.models.Tweet
 import com.twitter.sdk.android.tweetui.Timeline
 
-/**
- * Created by Konstantin on 16.11.2017.
- */
 class TwitterViewModel(getTimelineUseCase: GetTimelineUseCase) : ViewModel() {
 
     val searchQuery = MutableLiveData<String>()

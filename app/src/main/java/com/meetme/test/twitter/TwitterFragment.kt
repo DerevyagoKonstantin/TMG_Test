@@ -22,9 +22,6 @@ import com.twitter.sdk.android.tweetui.TweetTimelineRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_twitter.*
 import kotlinx.android.synthetic.main.fragment_twitter.view.*
 
-/**
- * Created by Konstantin on 13.11.2017.
- */
 class TwitterFragment : BaseFragment() {
 
     private val viewModelFactory by instance<TwitterViewModelFactory>()

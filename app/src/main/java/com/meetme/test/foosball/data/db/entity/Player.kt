@@ -4,10 +4,6 @@ import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
-/**
- * Created by Konstantin on 17.11.2017.
- */
-
 const val PLAYER = "player"
 const val PLAYER_ID = "id"
 const val FIRST_NAME = "first_name"

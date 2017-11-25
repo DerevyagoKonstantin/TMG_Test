@@ -6,9 +6,6 @@ import com.meetme.test.foosball.FoosballFragment
 import com.meetme.test.photo.PhotoFragment
 import com.meetme.test.twitter.TwitterFragment
 
-/**
- * Created by Konstantin on 13.11.2017.
- */
 class MainPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
 
     companion object {

@@ -11,10 +11,6 @@ import com.meetme.test.foosball.data.db.entity.Player
 import com.meetme.test.foosball.data.db.entity.PlayerWithGames
 import kotlinx.coroutines.experimental.async
 
-/**
- * Created by Konstantin on 17.11.2017.
- */
-
 const val FOOSBALL_DB_NAME = "foosball-db-name"
 
 @Database(entities = arrayOf(Player::class, Game::class), version = 4)

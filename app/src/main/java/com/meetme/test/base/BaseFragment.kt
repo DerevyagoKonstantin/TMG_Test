@@ -6,9 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.github.salomonbrys.kodein.android.KodeinSupportFragment
 
-/**
- * Created by Konstantin on 13.11.2017.
- */
 abstract class BaseFragment : KodeinSupportFragment() {
 
     abstract val viewId: Int

@@ -5,10 +5,6 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.ForeignKey
 import android.arch.persistence.room.PrimaryKey
 
-/**
- * Created by Konstantin on 17.11.2017.
- */
-
 const val GAME = "game"
 const val GAME_ID = "id"
 const val FIRST_PLAYER = "first_player"

@@ -7,10 +7,6 @@ import com.github.salomonbrys.kodein.provider
 import com.meetme.test.foosball.FoosballViewModelFactory
 import com.meetme.test.foosball.usecase.GetGamesUseCase
 
-/**
- * Created by Konstantin on 17.11.2017.
- */
-
 val foosballModule = Kodein.Module {
     bind<GetGamesUseCase>() with provider { GetGamesUseCase(instance()) }
 

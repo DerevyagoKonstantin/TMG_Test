@@ -10,9 +10,6 @@ import com.meetme.test.foosball.di.foosballLocaleModule
 import com.meetme.test.foosball.di.foosballPreferencesModule
 import com.twitter.sdk.android.core.Twitter
 
-/**
- * Created by Konstantin on 12.11.2017.
- */
 class TMGTestApplication : Application(), KodeinAware {
 
     override val kodein by Kodein.lazy {
