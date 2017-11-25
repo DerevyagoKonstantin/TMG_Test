@@ -2,6 +2,7 @@ package com.meetme.test.twitter
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
@@ -38,6 +39,10 @@ class TwitterFragment : BaseFragment() {
         if (activity is AppCompatActivity) {
             (activity as AppCompatActivity).setSupportActionBar(view.twitterToolbar)
         }
+
+        val drawable = context?.getDrawable(R.drawable.twitter_anim) as AnimatedVectorDrawable
+        view.twitterEmptyView.setImageDrawable(drawable)
+        drawable.start()
     }
 
     override fun bindVM() {

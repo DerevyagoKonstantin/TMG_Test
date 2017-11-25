@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_twitter_empty">
+
+    <target
+        android:name="twitter"
+        android:animation="@animator/rotation_infinity" />
+
+</animated-vector>
