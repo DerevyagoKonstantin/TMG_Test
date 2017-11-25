@@ -56,4 +56,6 @@
     <string name="foosball_sort_wins">Wins</string>
     <string name="foosball_sort_losses">Losses</string>
     <string name="foosball_sort_draws">Draws</string>
+    <string name="foosball_players_search">Search players…</string>
+    <string name="foosball_games_search">Search games by players…</string>
 </resources>

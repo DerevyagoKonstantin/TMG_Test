@@ -3,6 +3,8 @@ package com.meetme.test.foosball
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -73,7 +75,7 @@ class FoosballFragment : BaseFragment() {
         adapter.updateGame = viewModel.updateGame
         adapter.deleteGame = viewModel.deleteGame
 
-        viewModel.games.observe(this, Observer {
+        viewModel.sortedGames.observe(this, Observer {
             adapter.games = it ?: listOf()
         })
 
@@ -95,6 +97,19 @@ class FoosballFragment : BaseFragment() {
 
         viewModel.emptyVisibility.observe(this, Observer {
             foosballEmptyView.visible = it ?: false
+        })
+
+        view?.foosballGamesSearch?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                viewModel.search.value = p0.toString()
+            }
+
         })
     }
 

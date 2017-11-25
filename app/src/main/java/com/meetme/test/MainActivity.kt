@@ -32,7 +32,6 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         }
         R.id.main_navigation_foosball -> {
             mainViewPager.currentItem = MainPagerAdapter.FOOSBALL
-            hideKeyboard()
             true
         }
         else -> false

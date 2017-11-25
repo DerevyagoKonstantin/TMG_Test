@@ -18,7 +18,20 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="@string/main_navigation_foosball" />
+            app:title="@string/main_navigation_foosball">
+
+            <EditText
+                android:id="@+id/foosballGamesSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/foosball_games_search"
+                android:inputType="textFilter|textCapWords"
+                android:lines="1"
+                android:textColor="@android:color/white"
+                android:textCursorDrawable="@null" />
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -48,7 +61,6 @@
         android:layout_margin="@dimen/default_padding"
         android:src="@drawable/ic_add"
         app:layout_anchor="@id/foosballGamesRecyclerView"
-        app:layout_anchorGravity="end|bottom"
-        app:rippleColor="@color/white_alpha_50" />
+        app:layout_anchorGravity="end|bottom" />
 
 </android.support.design.widget.CoordinatorLayout>

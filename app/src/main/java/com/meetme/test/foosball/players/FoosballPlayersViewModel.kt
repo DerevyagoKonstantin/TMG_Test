@@ -1,6 +1,7 @@
 package com.meetme.test.foosball.players
 
 import android.arch.lifecycle.*
+import android.text.TextUtils
 import com.meetme.test.foosball.data.db.entity.Player
 import com.meetme.test.foosball.data.db.entity.PlayerWithGames
 import com.meetme.test.foosball.players.entity.PlayersSort
@@ -17,14 +18,15 @@ class FoosballPlayersViewModel(
 ) : ViewModel() {
 
     val sort = MutableLiveData<PlayersSort>()
-    val players = getPlayersWithGamesUseCase.execute(Unit)
+    val search = MutableLiveData<String>()
+    private val players = getPlayersWithGamesUseCase.execute(Unit)
     val sortedPlayers = MediatorLiveData<List<PlayerWithGames>>()
 
     val addPlayer = MutableLiveData<Unit>()
     val updatePlayer = MutableLiveData<Player>()
     val deletePlayer = MutableLiveData<Player>()
 
-    val emptyVisibility: LiveData<Boolean> = Transformations.map(players, { it.isEmpty() })
+    val emptyVisibility: LiveData<Boolean> = Transformations.map(sortedPlayers, { it.isEmpty() })
 
     init {
         sort.value = getPlayersSortUseCase.execute(Unit)
@@ -33,51 +35,76 @@ class FoosballPlayersViewModel(
             if (it != null) {
                 savePlayersSortUseCase.execute(it)
                 val players = players.value
+                val search = search.value ?: ""
                 if (players != null) {
-                    sortedPlayers.value = getSortedPlayers(it, players)
+                    sortedPlayers.value = getSortedPlayers(it, search, players)
                 }
+            }
+        })
+        sortedPlayers.addSource(search, {
+            val sort = sort.value
+            val search = it ?: ""
+            val players = players.value
+            if (sort != null && players != null) {
+                sortedPlayers.value = getSortedPlayers(sort, search, players)
             }
         })
         sortedPlayers.addSource(players, {
             val sort = sort.value
+            val search = search.value ?: ""
             if (it != null && sort != null) {
-                sortedPlayers.value = getSortedPlayers(sort, it)
+                sortedPlayers.value = getSortedPlayers(sort, search, it)
             }
         })
     }
 
-    private fun getSortedPlayers(sort: PlayersSort, players: List<PlayerWithGames>): List<PlayerWithGames> {
+    private fun getSortedPlayers(sort: PlayersSort, search: String, players: List<PlayerWithGames>): List<PlayerWithGames> {
+        val searchPlayers = getSearchPlayers(search, players)
         return when (sort) {
             PlayersSort.WIN_PERCENTAGE -> {
-                Collections.sort(players, { firstPlayer, secondPlayer ->
+                Collections.sort(searchPlayers, { firstPlayer, secondPlayer ->
                     secondPlayer.getWinPercentage().compareTo(firstPlayer.getWinPercentage())
                 })
-                players
+                searchPlayers
             }
             PlayersSort.GAMES -> {
-                Collections.sort(players, { firstPlayer, secondPlayer ->
+                Collections.sort(searchPlayers, { firstPlayer, secondPlayer ->
                     secondPlayer.getGames().compareTo(firstPlayer.getGames())
                 })
-                players
+                searchPlayers
             }
             PlayersSort.WINS -> {
-                Collections.sort(players, { firstPlayer, secondPlayer ->
+                Collections.sort(searchPlayers, { firstPlayer, secondPlayer ->
                     secondPlayer.wins.compareTo(firstPlayer.wins)
                 })
-                players
+                searchPlayers
             }
             PlayersSort.LOSSES -> {
-                Collections.sort(players, { firstPlayer, secondPlayer ->
+                Collections.sort(searchPlayers, { firstPlayer, secondPlayer ->
                     secondPlayer.loses.compareTo(firstPlayer.loses)
                 })
-                players
+                searchPlayers
             }
             PlayersSort.DRAWS -> {
-                Collections.sort(players, { firstPlayer, secondPlayer ->
+                Collections.sort(searchPlayers, { firstPlayer, secondPlayer ->
                     secondPlayer.draws.compareTo(firstPlayer.draws)
                 })
-                players
+                searchPlayers
             }
         }
+    }
+
+    private fun getSearchPlayers(search: String, players: List<PlayerWithGames>): List<PlayerWithGames> {
+        if (TextUtils.isEmpty(search)) {
+            return players
+        }
+
+        val searchPlayers = mutableListOf<PlayerWithGames>()
+        players.forEach {
+            if (it.getPlayer().toString().toLowerCase().contains(search.trim().toLowerCase())) {
+                searchPlayers.add(it)
+            }
+        }
+        return searchPlayers
     }
 }

@@ -4,6 +4,8 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import com.github.salomonbrys.kodein.Kodein
@@ -97,8 +99,6 @@ class FoosballPlayersActivity : BaseActivity() {
 
         viewModel.sort.observe(this, Observer { sort -> sort?.let { setSortedItem(it) } })
 
-        viewModel.players.observe(this, Observer { })
-
         viewModel.sortedPlayers.observe(this, Observer {
             adapter.players = it ?: listOf()
         })
@@ -117,6 +117,19 @@ class FoosballPlayersActivity : BaseActivity() {
 
         viewModel.emptyVisibility.observe(this, Observer {
             foosballPlayersEmptyView.visible = it ?: false
+        })
+
+        foosballPlayersSearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                viewModel.search.value = p0.toString()
+            }
+
         })
     }
 

@@ -18,7 +18,20 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="@string/foosball_players" />
+            app:title="@string/foosball_players">
+
+            <EditText
+                android:id="@+id/foosballPlayersSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/foosball_players_search"
+                android:inputType="textFilter|textCapWords"
+                android:lines="1"
+                android:textColor="@android:color/white"
+                android:textCursorDrawable="@null" />
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
