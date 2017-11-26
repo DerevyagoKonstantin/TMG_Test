@@ -23,10 +23,8 @@ class FoosballUpdateGameViewModel(
         getGameUseCase.execute(it)
     })
 
-    val updateGame = MutableLiveData<GameWithPlayers>()
-    val updateGameObserver: LiveData<GameWithPlayers> = Transformations.map(updateGame, {
-        updateGameUseCase.execute(it.getGame())
-        it
-    })
+    fun updateGame(game: GameWithPlayers) {
+        updateGameUseCase.execute(game.getGame())
+    }
 
 }

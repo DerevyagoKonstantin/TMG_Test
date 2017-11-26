@@ -5,7 +5,6 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.instance
 import com.meetme.test.R
@@ -74,10 +73,6 @@ class FoosballUpdateGameDialog : BaseDialogFragment() {
 
         dialogView.updateGameFirstScore.adapter = getScoreAdapter(context!!)
         dialogView.updateGameSecondScore.adapter = getScoreAdapter(context!!)
-
-        viewModel.updateGameObserver.observe(this, Observer {
-            Toast.makeText(context, getString(R.string.foosball_game_update, it), Toast.LENGTH_SHORT).show()
-        })
     }
 
     private fun <T> setSpinnerPosition(spinner: Spinner, item: T) {
@@ -95,7 +90,7 @@ class FoosballUpdateGameDialog : BaseDialogFragment() {
             val firstScore = dialogView.updateGameFirstScore.selectedItem as Int
             val secondScore = dialogView.updateGameSecondScore.selectedItem as Int
 
-            viewModel.updateGame.value = GameWithPlayers(game.id, firstPlayer, secondPlayer, firstScore, secondScore)
+            viewModel.updateGame(GameWithPlayers(game.id, firstPlayer, secondPlayer, firstScore, secondScore))
         }
 
         return true

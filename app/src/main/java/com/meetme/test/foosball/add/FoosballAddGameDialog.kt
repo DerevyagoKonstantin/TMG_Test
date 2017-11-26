@@ -44,10 +44,6 @@ class FoosballAddGameDialog : BaseDialogFragment() {
 
         dialogView.addGameFirstScore.adapter = getScoreAdapter(context!!)
         dialogView.addGameSecondScore.adapter = getScoreAdapter(context!!)
-
-        viewModel.saveGameObserver.observe(this, Observer {
-            Toast.makeText(context, getString(R.string.foosball_game_save, it), Toast.LENGTH_SHORT).show()
-        })
     }
 
     override fun positiveClick(): Boolean {
@@ -57,7 +53,7 @@ class FoosballAddGameDialog : BaseDialogFragment() {
             val firstScore = dialogView.addGameFirstScore.selectedItem as Int
             val secondScore = dialogView.addGameSecondScore.selectedItem as Int
 
-            viewModel.saveGame.value = GameWithPlayers(firstPlayer, secondPlayer, firstScore, secondScore)
+            viewModel.saveGame(GameWithPlayers(firstPlayer, secondPlayer, firstScore, secondScore))
 
             true
         } else {

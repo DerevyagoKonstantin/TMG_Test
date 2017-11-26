@@ -13,6 +13,9 @@ interface PlayerDao {
     @Delete
     fun delete(player: Player)
 
+    @Query("DELETE FROM $PLAYER WHERE id = :arg0")
+    fun delete(id: Long)
+
     @Update
     fun update(player: Player)
 

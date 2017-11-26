@@ -1,8 +1,5 @@
 package com.meetme.test.foosball.add
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import com.meetme.test.foosball.add.usecase.AddGameUseCase
 import com.meetme.test.foosball.data.db.entity.GameWithPlayers
@@ -16,9 +13,7 @@ class FoosballAddGameViewModel(
 
     val players = getPlayersUseCase.execute(Unit)
 
-    val saveGame = MutableLiveData<GameWithPlayers>()
-    val saveGameObserver: LiveData<GameWithPlayers> = Transformations.map(saveGame, {
-        addGameUseCase.execute(it.getGame())
-        it
-    })
+    fun saveGame(game: GameWithPlayers) {
+        addGameUseCase.execute(game.getGame())
+    }
 }

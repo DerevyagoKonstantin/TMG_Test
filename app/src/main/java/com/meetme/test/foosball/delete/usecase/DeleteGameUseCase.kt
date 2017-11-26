@@ -2,12 +2,11 @@ package com.meetme.test.foosball.delete.usecase
 
 import com.meetme.test.base.UseCase
 import com.meetme.test.foosball.data.db.FoosballLocalSource
-import com.meetme.test.foosball.data.db.entity.Game
 
 
-class DeleteGameUseCase(private val foosballLocalSource: FoosballLocalSource) : UseCase<Game, Unit> {
+class DeleteGameUseCase(private val foosballLocalSource: FoosballLocalSource) : UseCase<Long, Unit> {
 
-    override fun execute(input: Game) {
+    override fun execute(input: Long) {
         foosballLocalSource.deleteGame(input)
     }
 }

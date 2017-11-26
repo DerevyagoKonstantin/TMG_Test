@@ -55,10 +55,6 @@ class FoosballUpdatePlayerDialog : BaseDialogFragment() {
             }
         })
 
-        viewModel.updatePlayerObserver.observe(this, Observer {
-            Toast.makeText(context, getString(R.string.foosball_player_update, it), Toast.LENGTH_SHORT).show()
-        })
-
         dialog.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
     }
 
@@ -74,7 +70,7 @@ class FoosballUpdatePlayerDialog : BaseDialogFragment() {
             if (player != null) {
                 player.firstName = firstName
                 player.lastName = lastName
-                viewModel.updatePlayer.value = player
+                viewModel.updatePlayer(player)
             }
         }
 

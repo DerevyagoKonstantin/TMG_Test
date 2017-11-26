@@ -13,6 +13,9 @@ interface GameDao {
     @Delete
     fun delete(game: Game)
 
+    @Query("DELETE FROM $GAME WHERE id = :arg0")
+    fun delete(id: Long)
+
     @Update
     fun update(game: Game)
 

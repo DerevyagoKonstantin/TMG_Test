@@ -1,6 +1,5 @@
 package com.meetme.test.foosball.players.add
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.text.TextUtils
 import android.view.WindowManager
@@ -32,10 +31,6 @@ class FoosballAddPlayerDialog : BaseDialogFragment() {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(FoosballAddPlayerViewModel::class.java)
 
-        viewModel.savePlayerObserver.observe(this, Observer {
-            Toast.makeText(context, getString(R.string.foosball_player_save, it), Toast.LENGTH_SHORT).show()
-        })
-
         dialog.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
     }
 
@@ -47,7 +42,7 @@ class FoosballAddPlayerDialog : BaseDialogFragment() {
             Toast.makeText(context, R.string.foosball_player_empty_name, Toast.LENGTH_SHORT).show()
             return false
         } else {
-            viewModel.savePlayer.value = Player(firstName, lastName)
+            viewModel.savePlayer(Player(firstName, lastName))
         }
 
         return true

@@ -11,7 +11,7 @@ interface FoosballLocalSource {
 
     fun insertPlayer(player: Player)
 
-    fun deletePlayer(player: Player)
+    fun deletePlayer(id: Long)
 
     fun updatePlayer(player: Player)
 
@@ -23,7 +23,7 @@ interface FoosballLocalSource {
 
     fun insertGame(game: Game)
 
-    fun deleteGame(game: Game)
+    fun deleteGame(id: Long)
 
     fun updateGame(game: Game)
 

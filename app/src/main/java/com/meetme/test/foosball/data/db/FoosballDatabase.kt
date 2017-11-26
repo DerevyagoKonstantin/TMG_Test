@@ -24,9 +24,9 @@ abstract class FoosballDatabase : RoomDatabase(), FoosballLocalSource {
         }
     }
 
-    override fun deletePlayer(player: Player) {
+    override fun deletePlayer(id: Long) {
         async {
-            playerDao().delete(player)
+            playerDao().delete(id)
         }
     }
 
@@ -48,9 +48,9 @@ abstract class FoosballDatabase : RoomDatabase(), FoosballLocalSource {
         }
     }
 
-    override fun deleteGame(game: Game) {
+    override fun deleteGame(id: Long) {
         async {
-            gameDao().delete(game)
+            gameDao().delete(id)
         }
     }
 
