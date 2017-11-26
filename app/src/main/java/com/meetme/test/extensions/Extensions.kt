@@ -3,8 +3,8 @@ package com.meetme.test.extensions
 import android.app.Activity
 import android.content.Context
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 
 
 fun Activity.hideKeyboard() {
@@ -12,9 +12,12 @@ fun Activity.hideKeyboard() {
     inputMethodManager.hideSoftInputFromWindow(currentFocus.windowToken, 0)
 }
 
-fun Context.showKeyboard(editText: EditText) {
-    val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    inputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
+fun Activity.hideStatusBar() {
+    window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+}
+
+fun Activity.showStatusBar() {
+    window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 }
 
 var View.visible: Boolean

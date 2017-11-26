@@ -23,6 +23,10 @@
     <string name="twitter_search">Search tweets…</string>
     <string name="twitter_refresh_failed">Something wrong! Please try again.</string>
 
+    <!--Photo-->
+    <string name="photos_error">Something wrong! Please try again</string>
+    <string name="photos_upload">Upload photos</string>
+
     <!--Foosball-->
     <string name="foosball_score_separator">:</string>
     <string name="foosball_draw">Draw</string>

@@ -8,6 +8,7 @@ import com.github.salomonbrys.kodein.android.autoAndroidModule
 import com.github.salomonbrys.kodein.lazy
 import com.meetme.test.foosball.di.foosballLocaleModule
 import com.meetme.test.foosball.di.foosballPreferencesModule
+import com.meetme.test.photo.di.photosRemoteModule
 import com.twitter.sdk.android.core.Twitter
 
 class TMGTestApplication : Application(), KodeinAware {
@@ -16,6 +17,7 @@ class TMGTestApplication : Application(), KodeinAware {
         import(autoAndroidModule(this@TMGTestApplication))
         import(foosballLocaleModule)
         import(foosballPreferencesModule)
+        import(photosRemoteModule)
     }
 
     override fun onCreate() {

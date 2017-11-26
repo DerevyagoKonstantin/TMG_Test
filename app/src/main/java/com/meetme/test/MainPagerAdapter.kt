@@ -3,7 +3,7 @@ package com.meetme.test
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.meetme.test.foosball.FoosballFragment
-import com.meetme.test.photo.PhotoFragment
+import com.meetme.test.photo.PhotosFragment
 import com.meetme.test.twitter.TwitterFragment
 
 class MainPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
@@ -18,7 +18,7 @@ class MainPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAda
 
     override fun getItem(position: Int) = when (position) {
         0 -> TwitterFragment()
-        1 -> PhotoFragment()
+        1 -> PhotosFragment()
         else -> FoosballFragment()
     }
 }
