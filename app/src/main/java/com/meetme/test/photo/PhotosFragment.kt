@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.view.View
 import android.widget.Toast
+import com.eftimoff.viewpagertransformers.CubeOutTransformer
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.instance
 import com.meetme.test.R
@@ -28,6 +29,7 @@ class PhotosFragment : BaseFragment() {
 
     override fun initUI(view: View) {
         view.photosViewPager.adapter = adapter
+        view.photosViewPager.setPageTransformer(true, CubeOutTransformer())
     }
 
     override fun bindVM() {

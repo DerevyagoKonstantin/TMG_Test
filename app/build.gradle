@@ -65,5 +65,7 @@ dependencies {
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     //photoview
-    compile 'com.github.chrisbanes:PhotoView:2.0.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    //viewpager transformers
+    implementation 'com.eftimoff:android-viewpager-transformers:1.0.1@aar'
 }
